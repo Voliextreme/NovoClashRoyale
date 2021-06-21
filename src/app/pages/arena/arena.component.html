@@ -1,0 +1,29 @@
+<div class="page" >
+    <button #start (click)="ataque()">Start!</button>
+    <div class="arena">
+        <div class="chars">
+            <div class="friend">
+                <div class="personagem">
+                    <div class="health">
+                        <div class="actualhealth" #vidaplayer><p>{{service.charescolhido.hp}}</p></div>
+                    </div>
+                    <img src="../../../assets/ImagesArena/{{service.charescolhido.name}}.png">
+                </div>
+                <div class="tiro">
+                    <img id="ataquefriend" src="{{service.charescolhido.weaponsimg}}">
+                </div>
+            </div>
+            <div class="enemie">
+                <div class="personageminimigo">
+                    <div class="healthinimigo">
+                        <div class="actualhealthinimigo" #vidainimigo><p>{{service.monster.hp}}</p></div>
+                    </div>
+                    <img id="ataqueinimigo" src="../../../assets/ImagesArena/goblin.png">
+                </div>
+                <div class="tiroinimigo">
+                    <img src={{service.monster.weaponsimg}}>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

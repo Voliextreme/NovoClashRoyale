@@ -1,0 +1,151 @@
+.page{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-image: url("../../../assets/ImagesArena/arena.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.chars{
+    width: 100vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.friend{
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.enemie{
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scaleX(-1);
+
+}
+
+.personagem{
+    z-index: 2;
+}
+
+.personagem img{
+    width: 12vw;
+    height: 30vh;
+}
+
+.tiro{
+    z-index: 1;
+}
+
+.tiro img{
+    position: fixed;
+    width: 4vw;
+    height: 4vw;
+    left: 22vw;
+    bottom: 16vh;
+}
+
+.disparofriend{
+    animation: slidein 2s linear ;
+}
+
+@keyframes slidein {
+    to {
+        margin-left: 52vw;
+      }
+    }
+
+
+.personageminimigo{
+    z-index: 3;
+}
+.personageminimigo img{
+    width: 12vw;
+    height: 30vh;
+}
+.tiroinimigo {
+    z-index: 1;
+}
+.tiroinimigo img{
+    position: fixed;
+    width: 4vw;
+    height: 4vw;
+    left: 22vw;
+    bottom: 16vh;
+    /*animation-delay: 3s;*/
+    animation-duration: 2s;
+    animation-name: slideout;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+/*
+@keyframes slideout {
+    to {
+        margin-left: 52vw;
+      }
+}*/
+
+.health, .healthinimigo{
+    position: relative;
+    bottom: 4vh;
+    width: 14vw;
+    height: 1vw;
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.233);
+    overflow: hidden;
+}
+.health{
+    background-color: #255273;
+}
+
+.actualhealth{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-align: center;
+}
+
+.actualhealthinimigo{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-align: center;
+}
+
+.actualhealthinimigo p{
+    transform: scaleX(-1);
+}
+
+
+.actualhealth{
+    background-color: #3788C2;
+}
+.healthinimigo{
+    background-color: #732525;
+}
+.actualhealthinimigo{
+    background-color: #C23737;
+}
+
+button{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background-color: rgba(255, 183, 0, 0.901);
+    width: 8vw;
+    height: 6vh;
+    border-radius: 25px;
+    border: 1px solid black;
+}

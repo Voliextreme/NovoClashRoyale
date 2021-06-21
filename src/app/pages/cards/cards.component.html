@@ -1,0 +1,82 @@
+<div class="main-cards" #main>
+    <div class="logo" [routerLink]="['/lobby']"></div>
+    <div class="barbarian"></div>
+    <div class="baloon"></div>
+    <div class="wood">
+        <div class="archer"  (click)="toggle(main, weapons, stats, 0)" ></div>
+        <div class="bomber" (click)="toggle(main, weapons, stats, 1)" ></div>
+        <div class="goblin" (click)="toggle(main, weapons, stats, 2)" ></div>
+        <div class="musketeer" (click)="toggle(main, weapons, stats, 3)" ></div>
+    </div>
+    <div class="wizard"></div>
+
+</div>
+<div class="stats" #stats>
+    <div class="dentro">
+        <div class="primeira">
+            <!--<div class="imagem"></div>-->
+            <img id="imagemperfil" src="{{service.charescolhido.img}}">
+            <div class="segunda">
+                <p id="nome" class="nome">{{service.charescolhido.name}}</p>
+                <p class="texto">{{service.charescolhido.design}}</p>
+            </div>
+       </div>
+       <div class="terceira">
+            <div class="barra">
+                <img src="../../../assets/ImagesCards/hp.png">
+                <div class="quarta">
+                    <div class="descricao">Hitpoints</div>
+                    <div class="hp">{{service.charescolhido.hp}}</div>
+                 </div>
+            </div>
+            <div class="barra">
+                <img src="../../../assets/ImagesCards/damage2.png">
+                <div class="quarta">
+                <div class="descricao">Damage</div>
+                <div class="damage">{{service.charescolhido.atk}}</div>
+            </div>
+            </div>
+            <div class="barra">
+                <img src="../../../assets/ImagesCards/crit.png">
+                <div class="quarta">
+                  <div class="descricao">crit</div>
+                  <div class="crit">{{service.charescolhido.crit}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="butoes" >
+            <button id="wp" style="background-color: rgba(3, 155, 3, 0.901);" (click)="turn(stats,weapons)"> WEAPON</button>
+            <button id="usar" style="background-color: rgba(255, 183, 0, 0.901);" [routerLink]="'/lobby'"> USE</button>
+        </div>
+        <!-- (click)="choosen(escolhido)" -->
+    </div>
+</div>
+
+<div class="weapons" #weapons>
+    <div class="weaponsdentro">
+        <div class="escolhas">
+            <div class="single" #weapon1 (click)="choosedweapon(stats, weapons, 0)" >
+                <img src="{{service.charescolhido.weaponsimg}}">
+                <div class="estatistics">
+                    <div class="dmg">
+                        <img src="../../../assets/ImagesCards/damage2.png">
+                        <p>{{service.charescolhido.weapondamage}}</p>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="single" #weapon2 (click)="choosedweapon(stats, weapons, 1)">
+                <img src="{{service.charescolhido.weapon}}">
+                <div class="estatistics">
+                    <div class="dmg">
+                        <img src="../../../assets/ImagesCards/damage2.png">
+                        <p>{{service.charescolhido.weapon}}</p>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+</div>
+
+
+

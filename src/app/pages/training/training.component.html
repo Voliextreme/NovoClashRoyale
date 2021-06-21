@@ -1,0 +1,10 @@
+<div class="page">
+    <div class="niveis">
+        <div class="gold">
+            <img src="../../../assets/Images/coin.png">
+            <p>{{service.coins}}</p>
+        </div>
+    </div>
+    <button id="sair" [routerLink]="['/lobby']">Sair</button>
+    <button (click)="treinar()" #train >Workout<br><p style="color:red">-500 coins </p></button>
+</div>

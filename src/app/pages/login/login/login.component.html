@@ -1,0 +1,11 @@
+<div class="page">
+    <div class="logo">
+    </div>
+    <div class="king"></div>
+    <div class="kingred"></div>
+    <div class="formulario" #formulario>
+        <input placeholder="Name" #name>
+        <input placeholder="Password" #pass type="password">
+        <button (click)="dologin(name.value, pass.value, formulario)">Login</button>
+    </div>
+</div>

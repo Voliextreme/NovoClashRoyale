@@ -1,0 +1,355 @@
+@font-face {
+	font-family: 'clash';
+	src: url('../../../assets/Fonts/clashroyale.ttf');
+}
+* {
+	font-family: "clash";
+	font-size: 0.95rem;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+.main-cards{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url("../../../assets/ImagesCards/fundo.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.logo{
+    width: 25vw;
+    height: 10vw;
+    align-self: center;
+    background-image: url("../../../assets/ImagesCards/logo.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.logo:hover{
+    filter: drop-shadow(0 0 5px white);
+  }
+.barbarian{
+    width: 420px;
+    height: 450px;
+    right: 12vw;
+    top: 2vh;
+    position: fixed;
+    background-image: url("../../../assets/ImagesCards/barbarian.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.wood{
+    width: 75vw;
+    height: 65vh;
+    margin-top: 5vh;
+    align-self: center;
+    background-image: url("../../../assets/ImagesCards/wood2.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(75%);
+    border-radius: 10px;
+    box-shadow: 0 0 3px 3px rgba(250, 251, 252, 0.288);
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+}
+.wood > *{
+    width: 13vw;
+    height: 30vh;
+    align-self: center;
+}
+.wood :hover{
+    width: 14vw;
+    height: 31vh;
+    cursor: pointer;
+}
+
+.archer{
+    background-image: url("../../../assets/ImagesCards/ArchersCard.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.bomber{
+    background-image: url("../../../assets/ImagesCards/BomberCard.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.goblin{
+    background-image: url("../../../assets/ImagesCards/GoblinsCard.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.musketeer{
+    background-image: url("../../../assets/ImagesCards/MusketeerCard.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.wizard{
+    width: 420px;
+    height: 450px;
+    right: -4%;
+    bottom: -14%;
+    position: fixed;
+    background-image: url("../../../assets/ImagesCards/wizard.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 3;
+}
+
+.baloon{
+    width: 300px;
+    height: 450px;
+    right: 12vw;
+    left: 1vh;
+    position: fixed;
+    background-image: url("../../../assets/ImagesCards/baloon.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 3;
+}
+/*------------------------------ Stats ---------------------------------*/
+.stats{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30vw;
+    height: 78vh;
+    background-color: #F79619;
+    border-radius: 25px;
+    z-index: -5;
+}
+
+.dentro{
+    position: fixed;
+    align-self: center;
+    justify-self: center;
+    margin: 8px;
+    width: 29vw;
+    height: 76vh;
+    background-image: url("../../../assets/ImagesCards/fundo.png");
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.primeira{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+}
+.segunda{
+    margin-top: 3%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.nome{
+    width: 80%;
+    justify-self: center;
+    font-size: 32px;
+    margin-top: 2vh;
+}
+.texto{
+    margin-top: 5%;
+    width: 80%;
+    justify-self: center;
+}
+
+.primeira img  {
+    margin-top: 2.5vh;
+    margin-left: 1.5vw;
+    width: 8vw;
+    height: 19vh;
+}
+
+.terceira{
+    height: 35%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 15%;
+    margin-left: 2%;
+    text-shadow: none;
+    -webkit-text-stroke: 0.5px black;
+}
+
+.barra{
+    height: 25%;
+    aspect-ratio: 4/1;
+    border-radius: 25px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 2%;
+}
+.barra img{
+    width: 60px;
+    height: 60px;
+}
+
+
+.quarta{
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+}
+.butoes{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.butoes button{
+    width: 10vw;
+    height: 8vh;
+    border-radius: 25px;
+    border: 1px solid black;
+}
+
+button:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
+.weapons{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30vw;
+    height: 78vh;
+    background-color: #F79619;
+    border-radius: 25px;
+    z-index: 10;
+    display: none;
+}
+
+.weaponsdentro{
+    position: fixed;
+    align-self: center;
+    justify-self: center;
+    margin: 8px;
+    width: 29vw;
+    height: 76vh;
+    background-image: url("../../../assets/ImagesCards/fundo.png");
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.escolhas{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+.single{
+    width: 95%;
+    height: 30%;
+    background-color: rgba(255, 255, 255, 0.10);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.single img{
+    width: 30%;
+    aspect-ratio: 1/1;
+}
+.single:hover{
+    transform: scaleX(1.02);
+    background-color: rgba(255, 255, 255, 0.30);
+}
+
+
+.estatistics{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.estatistics img{
+    width: 25%;
+    aspect-ratio: 1/1;
+}
+.estatistics p{
+    margin-right: 10%;
+    color:black;
+    font-size: larger;
+}
+
+.dmg, .sped{
+    width: 60%;
+    height: 25%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.rotatestats{
+  animation: flip-vertical-fwd 0.8s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+@keyframes flip-vertical-fwd {
+  0% {
+            transform:  rotateY(0) translateY(-50%) translateX(-50%);
+  }
+  50%{
+    transform:translateY(-50%) translateX(-50%);
+    opacity: 100;
+  }
+  100% {
+            transform: rotateY(180deg) translateY(-50%) translateX(50%);
+            opacity: 0;
+  }
+}
+
+.fadeweapons{
+  animation: fadein 0.6s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 20;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+
+
