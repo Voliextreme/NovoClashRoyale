@@ -54,17 +54,17 @@
     bottom: 16vh;
 }
 
+/*
 .disparofriend{
     animation: slidein 2s linear ;
 }
-
 @keyframes slidein {
     to {
         margin-left: 52vw;
       }
     }
 
-
+*/
 .personageminimigo{
     z-index: 3;
 }
@@ -81,19 +81,19 @@
     height: 4vw;
     left: 22vw;
     bottom: 16vh;
-    /*animation-delay: 3s;*/
+    /*animation-delay: 3s;
     animation-duration: 2s;
     animation-name: slideout;
     animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    animation-timing-function: linear;*/
 }
 /*
 @keyframes slideout {
     to {
         margin-left: 52vw;
       }
-}*/
-
+}
+*/
 .health, .healthinimigo{
     position: relative;
     bottom: 4vh;

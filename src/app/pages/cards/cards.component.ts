@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { asapScheduler } from 'rxjs';
 import { RoyaleServiceService } from 'src/app/services/royale-service.service';
 
 @Component({
@@ -11,114 +13,27 @@ import { RoyaleServiceService } from 'src/app/services/royale-service.service';
 export class CardsComponent implements OnInit {
 
   service : RoyaleServiceService
-  constructor( private RoyaleService: RoyaleServiceService) { 
+  constructor( private RoyaleService: RoyaleServiceService, private router: Router) { 
     this.service = RoyaleService;
   }
 
   ngOnInit(): void {
-    this.getchar();
   }
 
   getchar(){
-      this.RoyaleService.getCharID(110).subscribe((x) => {
+      this.RoyaleService.getCharID(localStorage.getItem("id_personagem")).subscribe((x) => {
         if (x['code'] == 200) {
-          this.RoyaleService.charescolhido.name = x['data'].Personagens[0].Nome;
-          this.RoyaleService.charescolhido.id = x['data'].Personagens[0].ID;
-          this.RoyaleService.charescolhido.atk = x['data'].Personagens[0].Atk;
-          this.RoyaleService.charescolhido.isMonset = x['data'].Personagens[0].IsMonset;
-          this.RoyaleService.charescolhido.crit = x['data'].Personagens[0].Int;
-          this.RoyaleService.charescolhido.hp = x['data'].Personagens[0].Vida;
-          // this.RoyaleService.charescolhido.img = x['data'].Personagens[0].Imagem;
-          this.RoyaleService.charescolhido.idPlayer = x['data'].Personagens[0].ID_Player;
+          this.RoyaleService.charescolhido.name = x['data'].Personagens[this.escolhido].Nome;
+          this.RoyaleService.charescolhido.id = x['data'].Personagens[this.escolhido].ID;
+          this.RoyaleService.charescolhido.atk = x['data'].Personagens[this.escolhido].Atk;
+          this.RoyaleService.charescolhido.isMonset = x['data'].Personagens[this.escolhido].IsMonset;
+          this.RoyaleService.charescolhido.crit = x['data'].Personagens[this.escolhido].Int;
+          this.RoyaleService.charescolhido.hp = x['data'].Personagens[this.escolhido].Vida;
+          this.RoyaleService.charescolhido.idPlayer = x['data'].Personagens[this.escolhido].ID_Player;
         }
       });
   }
-  
-/*
-  character: any = [ 
-  {
-    value: "0",
-    img: "../../../assets/ImagesCards/ArchersCard.png",
-    name: "Archer",
-    design: "A powerful she/her with some arrows to spare",
-    hp: 1900,
-    damage: 110,
-    crit: 1.9,
-    weapons: [{
-      wname: "arrow",
-      wimg : "../../../assets/ImagesArena/arrow.png",
-      wdamage : 10,
-    },
-    {
-      wname: "arrow2",
-      wimg : "../../../assets/ImagesArena/arrow2.png",
-      wdamage : 20,
-    },
-  ]
-  },
-  {
-    value: "1",
-    img: "../../../assets/ImagesCards/BomberCard.png",
-    name: "Bomber",
-    design: "Small skeleton but powerful with powerful bombs.",
-    hp: 1000,
-    damage: 190,
-    crit: 1.4,
-    weapons: [{
-      wname: "bomb",
-      wimg : "../../../assets/ImagesArena/bomb.png",
-      wdamage : 10,
-    },
-    {
-      wname: "bomb2",
-      wimg : "../../../assets/ImagesArena/bomb2.png",
-      wdamage : 20,
-    },
-  ]
-  },
-  {
-    value: "2",
-    img: "../../../assets/ImagesCards/GoblinsCard.png",
-    name: "Goblin",
-    design: "One sportinguista with hope of victory",
-    hp: 1500,
-    damage: 150,
-    crit: 1.3,
-    weapons: [{
-      wname: "spear",
-      wimg : "../../../assets/ImagesArena/spear.png",
-      wdamage : 10,
-    },
-    {
-      wname: "spear2",
-      wimg : "../../../assets/ImagesArena/spear2.png",
-      wdamage : 20,
-    },
-  ]
-  },
-  {
-    value: "3",
-    img: "../../../assets/ImagesCards/MusketeerCard.png",
-    name: "Musketeer",
-    design: "Strong Bitch with strong weapon",
-    hp: 3000,
-    damage: 130,
-    crit: 1,
-    weapons: [{
-      wname: "ball",
-      wimg : "../../../assets/ImagesArena/ball.png",
-      wdamage : 10,
-    },
-    {
-      wname: "ball2",
-      wimg : "../../../assets/ImagesArena/ball2.png",
-      wdamage : 20,
-    },
-  ]
-  },
-  ]
-  */
-  
+ 
   escolhido: string ="0";
 
   public bright:boolean = false
@@ -140,6 +55,25 @@ export class CardsComponent implements OnInit {
     }
     main.style.overflow="hidden";
     this.escolhido = charac;
+    if(+this.escolhido == 0){
+      this.RoyaleService.charescolhido.img = "../../../assets/ImagesCards/ArchersCard.png";
+      this.RoyaleService.charescolhido.design = "A powerful she/her with some arrows to spare";
+      this.RoyaleService.charescolhido.weaponsimg = "../../../assets/ImagesArena/arrow.png";
+    }else if(+this.escolhido == 1){
+      this.RoyaleService.charescolhido.img = "../../../assets/ImagesCards/BomberCard.png";
+      this.RoyaleService.charescolhido.design = "Small skeleton but powerful with powerful bombs";
+      this.RoyaleService.charescolhido.weaponsimg = "../../../assets/ImagesArena/bomb.png";
+    }else if(+this.escolhido == 2){
+      this.RoyaleService.charescolhido.img = "../../../assets/ImagesCards/GoblinsCard.png";
+      this.RoyaleService.charescolhido.design = "One sportinguista with hope of victory";
+      this.RoyaleService.charescolhido.weaponsimg = "../../../assets/ImagesArena/spear.png";
+    }else if(+this.escolhido == 3){
+      this.RoyaleService.charescolhido.img = "../../../assets/ImagesCards/MusketeerCard.png";
+      this.RoyaleService.charescolhido.design = "Strong Hoe with strong weapon";
+      this.RoyaleService.charescolhido.weaponsimg = "../../../assets/ImagesArena/ball.png";
+    }
+    this.criarChar(this.escolhido);
+
   } 
 
 
@@ -166,5 +100,36 @@ export class CardsComponent implements OnInit {
     this.armaescolhida = weapones;
   }
 
+
+  //METODO UTILIZADO NO CRIAR UMA PERSONAGEM NOVA
+  criarChar(id){
+      this.RoyaleService.getCharID(localStorage.getItem("id_personagem")).subscribe((x) => {
+        if (x['data'].Personagens[id]) {
+          this.getchar();
+        }else {
+          if(id == 1){
+            var nome = "Bomber";
+            var atk = 40;
+            var int = 10;
+            var vida = 120;
+          }else if(id == 2){
+            var nome = "Goblin";
+            var atk = 30;
+            var int = 18;
+            var vida = 90;
+          }else if(id == 3){
+            var nome = "Musketeer";
+            var atk = 60;
+            var int = 5;
+            var vida = 80;
+          }
+          this.RoyaleService.criarChar(nome, atk, int, vida, "tiago", "tiago123").subscribe((x) =>{
+            console.log(x['data']);
+            this.getchar();
+          });
+        }
+      });
+      
+  }
 
 }

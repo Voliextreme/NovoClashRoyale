@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   dologin(name,pass, formulario : HTMLDivElement){
     this.royaleService.login(name, pass).subscribe(x =>{
       if(x['code'] == 200){
-        localStorage.setItem("id", x['data'])
+        localStorage.setItem("id_personagem", x['data'])
         localStorage.setItem("logged", "true") 
         console.log(x['data'])
         this.router.navigate(['/lobby'])

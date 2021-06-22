@@ -14,6 +14,7 @@ export class LobbyComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.royaleService.coins = Number(localStorage.getItem("coins"));
   }
 
 }

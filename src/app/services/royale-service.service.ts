@@ -19,11 +19,11 @@ export class RoyaleServiceService {
     atk: "10",
     isMonset: "false",
     crit: "10",
-    hp: "100",
-    img: "../../../assets/ImagesCards/ArchersCard.png",
-    design: "A powerful she/her with some arrows to spare",
+    hp: "30",
+    img: "",
+    design: "",
     idPlayer: "",
-    weaponsimg : "../../../assets/ImagesArena/arrow.png",
+    weaponsimg : "",
     weapondamage : 10,
   };
 
@@ -65,19 +65,30 @@ export class RoyaleServiceService {
     return this.http.get(this.linkRndChar);
   }
 
-  updateStats(atk, crit, hp) {
+  updateStats(atk, crit, hp, id) {
     let bodyData: FormData = new FormData();
-
-    bodyData.append('name', this.charescolhido.name);
-    bodyData.append('atk', atk.toString());
-    bodyData.append('isMonster', 'false');
-    bodyData.append('int', crit.toString());
-    bodyData.append('vida', hp.toString());
-    bodyData.append('username', "tiago");
-    bodyData.append('password', "tiago123");
-
+      bodyData.append('idChar', id.toString());
+      bodyData.append('name', this.charescolhido.name);
+      bodyData.append('atk', atk.toString());
+      bodyData.append('isMonster', 'false');
+      bodyData.append('int', crit.toString());
+      bodyData.append('vida', hp.toString());
+      bodyData.append('username', "tiago");
+      bodyData.append('password', "tiago123");
+    
     return this.http.post(this.linkUpdateChar, bodyData);
   }
 
+  criarChar(nome, atk, int, vida, utilizador, password){
+    let bodyData: FormData = new FormData();
+    bodyData.append('name', nome.toString());
+    bodyData.append('atk', atk.toString());
+    bodyData.append('isMonster', 'false');
+    bodyData.append('int', int.toString());
+    bodyData.append('vida', vida.toString());
+    bodyData.append('username', utilizador);
+    bodyData.append('password', password);
+    return this.http.post(this.linkCreateChar, bodyData);
+  }
 
 }
