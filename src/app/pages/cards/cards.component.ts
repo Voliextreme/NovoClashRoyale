@@ -107,7 +107,12 @@ export class CardsComponent implements OnInit {
         if (x['data'].Personagens[id]) {
           this.getchar();
         }else {
-          if(id == 1){
+          if(id == 0){
+            var nome = "Archer";
+            var atk = 30;
+            var int = 35;
+            var vida = 70;
+          }else if(id == 1){
             var nome = "Bomber";
             var atk = 40;
             var int = 10;
@@ -123,7 +128,7 @@ export class CardsComponent implements OnInit {
             var int = 5;
             var vida = 80;
           }
-          this.RoyaleService.criarChar(nome, atk, int, vida, "tiago", "tiago123").subscribe((x) =>{
+          this.RoyaleService.criarChar(nome, atk, int, vida, this.RoyaleService.name, this.RoyaleService.pass).subscribe((x) =>{
             console.log(x['data']);
             this.getchar();
           });

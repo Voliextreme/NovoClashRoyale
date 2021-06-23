@@ -285,7 +285,7 @@ button:hover{
 }
 .single img{
     width: 30%;
-    aspect-ratio: 1/1;
+    height: auto;
 }
 .single:hover{
     transform: scaleX(1.02);

@@ -6,6 +6,9 @@
     <div class="formulario" #formulario>
         <input placeholder="Name" #name>
         <input placeholder="Password" #pass type="password">
-        <button (click)="dologin(name.value, pass.value, formulario)">Login</button>
+        <div class="butoes">
+            <button (click)="dologin(name.value, pass.value)">Login</button>
+            <button style="background-color: rgb(255, 40, 40);"(click)="doregister(name.value, pass.value)">Register</button>
+        </div>
     </div>
 </div>

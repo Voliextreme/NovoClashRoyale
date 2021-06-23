@@ -42,6 +42,8 @@ getRndPlayer() {
 
 @ViewChild('vidaplayer') vidaplayer : any;
 @ViewChild('vidainimigo') vidainimigo : any;
+@ViewChild('tiroamigo') tiroamigo : any;
+@ViewChild('tiroinimigo') tiroinimigo : any;
 
 @ViewChild('start') start : any;
   
@@ -61,6 +63,7 @@ getRndPlayer() {
 
   playerataque(){
     let playerAtkValue = Math.round((+this.service.charescolhido.atk + +this.service.charescolhido.weapondamage + (+this.service.charescolhido.crit/3))/2);
+    this.tiroamigo.nativeElement.classList.toggle("disparofriend");
     this.service.monster.hp -= playerAtkValue;
     //this.vidaplayer.nativeElement.style.transform = "translate(" + (-(this.service.charescolhido.hp - this.service.monster.atk) * 100 / this.service.charescolhido.hp) + "%";
     this.verificarhp();
@@ -72,9 +75,12 @@ getRndPlayer() {
       this.op = true;
       this.service.monster.hp -= monsterAtkValue;
       console.log("monstro OP");
+      console.log(this.service.monster.atk);
       this.verificarhp();
     }
     else{
+      this.tiroinimigo.nativeElement.classList.toggle("disparoememy");
+      this.tiroamigo.nativeElement.classList.toggle("disparofriend");
       this.service.charescolhido.hp -= monsterAtkValue;
       //this.vidainimigo.nativeElement.style.width = "translate(" + ((this.service.monster.hp - this.service.charescolhido.atk) * 100 / this.service.monster.hp) + "%";
       this.verificarhp();
@@ -95,13 +101,14 @@ getRndPlayer() {
         this.playeratk = true;
       }
       setTimeout(() => {
-        this.ataque();    
-      }, 2000);
+        this.ataque(); 
+        this.tiroinimigo.nativeElement.classList.toggle("disparoememy");
+      }, 3000);
     }
   }
 
   endgame(lost : any){
-    
+    this.op = false;
     if(lost == 1){
       console.log("winner");
       this.service.coins += 10;

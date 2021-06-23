@@ -23,7 +23,7 @@ export class RoyaleServiceService {
     img: "",
     design: "",
     idPlayer: "",
-    weaponsimg : "",
+    weaponsimg : "../../../assets/ImagesArena/arrow.png",
     weapondamage : 10,
   };
 
@@ -43,8 +43,11 @@ export class RoyaleServiceService {
 
   coins : any;
 
+  name : any;
+  pass : any;
+  
   linkLogin: string = "http://moreiramoises.pt/server/apis/login.php";
-  linkLogon: string = 'http://moreiramoises.pt/server/apis/signup.php';
+  linkRegister: string = 'http://moreiramoises.pt/server/apis/signup.php';
   linkCreateChar: string = 'http://moreiramoises.pt/server/apis/createChart.php';
   linkCharId: string = 'http://moreiramoises.pt/server/apis/get/getChar.php?PlayerID=';
   linkRndChar: string = 'http://moreiramoises.pt/server/apis/get/getRandomChar.php?';
@@ -54,7 +57,16 @@ export class RoyaleServiceService {
     let bodyData: FormData = new FormData();
     bodyData.append("username", name);
     bodyData.append("password", pass);
+    this.name = name;
+    this.pass = pass;
     return this.http.post(this.linkLogin, bodyData);
+  }
+  
+  register(name,pass){
+    let bodyData: FormData = new FormData();
+    bodyData.append("username", name);
+    bodyData.append("password", pass);
+    return this.http.post(this.linkRegister, bodyData);
   }
 
   getCharID(id) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { RoyaleServiceService } from 'src/app/services/royale-service.service';
 
@@ -15,6 +15,10 @@ export class LoginComponent implements OnInit {
     this.router = router;
   }
 
+  @ViewChild('name') inputname : any;
+  @ViewChild('pass') inputpass : any; 
+  @ViewChild('formulario') formulario:any;
+
   ngOnInit(): void {
     if(localStorage.getItem("coins")){
      this.royaleService.coins = Number(localStorage.getItem("coins")) ;
@@ -24,17 +28,41 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  dologin(name,pass, formulario : HTMLDivElement){
+  dologin(name,pass){
     this.royaleService.login(name, pass).subscribe(x =>{
       if(x['code'] == 200){
         localStorage.setItem("id_personagem", x['data'])
         localStorage.setItem("logged", "true") 
         console.log(x['data'])
         this.router.navigate(['/lobby'])
-      }else{
         
-        console.log("Wrong Username or Password!")
+      }else{
+        this.inputname.nativeElement.style.backgroundColor = "rgb(255, 40, 40)";
+        this.inputpass.nativeElement.style.backgroundColor = "rgb(255, 40, 40)";
+        setTimeout(() => {
+          this.inputname.nativeElement.style.backgroundColor = "white"
+          this.inputpass.nativeElement.style.backgroundColor = "white"
+        }, 1000);
+        
         localStorage.setItem("logged", "false")
+      }
+    })
+  }
+
+  doregister(name,pass){
+    this.royaleService.register(name, pass).subscribe(x =>{
+      if(x['code'] == 200){
+        localStorage.setItem("id_personagem", x['data'])
+        this.royaleService.criarChar("Archer", 30, 35, 70, name, pass).subscribe((x) =>{});
+        this.dologin(name,pass);
+      }else{
+        this.inputname.nativeElement.style.backgroundColor = "rgb(255, 40, 40)";
+        this.inputpass.nativeElement.style.backgroundColor = "rgb(255, 40, 40)";
+        setTimeout(() => {
+          this.inputname.nativeElement.style.backgroundColor = "white"
+          this.inputpass.nativeElement.style.backgroundColor = "white"
+        }, 1000);
+        localStorage.setItem("registered", "false")
       }
     })
   }

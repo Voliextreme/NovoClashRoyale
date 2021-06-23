@@ -25,6 +25,8 @@ import { TrainingComponent } from './pages/training/training.component';
     HttpClientModule,
   ],
   providers: [LobbyComponent, ArenaComponent, CardsComponent],
+  
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

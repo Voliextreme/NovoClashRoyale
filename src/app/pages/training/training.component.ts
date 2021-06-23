@@ -36,7 +36,7 @@ export class TrainingComponent implements OnInit {
   }
 
   treinar(){
-    if(!this.hasOneDayPassed() && this.service.coins >= 500){
+    if(this.hasOneDayPassed() && this.service.coins >= 500){
       this.service.coins -= 500;
       let atk = +this.service.charescolhido.atk +5;
       let crit = +this.service.charescolhido.crit +5;
