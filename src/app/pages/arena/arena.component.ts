@@ -10,6 +10,7 @@ import { RoyaleServiceService } from 'src/app/services/royale-service.service';
 })
 export class ArenaComponent implements OnInit {
 
+  //Declaraçao e import dos serviços
   service : RoyaleServiceService;
   router : Router;
   constructor(private RoyaleService : RoyaleServiceService, router : Router) { 
@@ -17,12 +18,14 @@ export class ArenaComponent implements OnInit {
     this.router = router;
   }
 
+  // Ao iniciar vai buscar um random player
   ngOnInit(): void {
     this.getRndPlayer(); 
   }
   ngAfterViewInit() : void{
   }
 
+// Funçao para ir buscar um random player e iguala as stats dele ao objeto monster do servico
 getRndPlayer() {
   this.vidabase = this.service.charescolhido.hp;
   this.service.getRndChar().subscribe((x) => {
@@ -39,7 +42,7 @@ getRndPlayer() {
     }
   });
 }
-
+// declaraçao de variaveis e viewchild para ediçao do DOM
 @ViewChild('vidaplayer') vidaplayer : any;
 @ViewChild('vidainimigo') vidainimigo : any;
 @ViewChild('tiroamigo') tiroamigo : any;
@@ -51,6 +54,7 @@ getRndPlayer() {
   vidabase : number;
   op: boolean = false;
 
+  // funçao que verifica quem é o proximo a atacar
   ataque(){
     this.start.nativeElement.style.display = "none";
     if(this.playeratk){
@@ -60,6 +64,8 @@ getRndPlayer() {
     }
   }
 
+// caso seja o turno do player, faz um calculo do dano do player no qual soma o dano do player da arma e 1/3 do atributo crit 
+// divide este dano por 2 para haver umas batalhas mais equilibradas 
 
   playerataque(){
     let playerAtkValue = Math.round((+this.service.charescolhido.atk + +this.service.charescolhido.weapondamage + (+this.service.charescolhido.crit/3))/2);
@@ -69,6 +75,9 @@ getRndPlayer() {
     this.verificarhp();
   }
 
+  // o ataque do monstro "inimigo" é semelhante porem inclui uma funçao para verificar se o inimigo é demasiado OP ou seja
+  // calcula se o dano do monstro é superior á vida base do player e se sim na primeira jogada o monstro sofre o dano
+  // para o player ter uma chance 
   monsterataque(){
     let monsterAtkValue = Math.round((+this.service.monster.atk + +this.service.monster.weapondamage + (+this.service.monster.crit/3))/2);
     if(this.service.monster.atk > this.vidabase && this.op != true){
@@ -82,11 +91,14 @@ getRndPlayer() {
       this.tiroinimigo.nativeElement.classList.toggle("disparoememy");
       this.tiroamigo.nativeElement.classList.toggle("disparofriend");
       this.service.charescolhido.hp -= monsterAtkValue;
+      // Este translate em baixo era uma tentativa de por a barra da vida a diminuir conforme o hp baixava porem nao ficou 100% funcional entao fica em comentario 
       //this.vidainimigo.nativeElement.style.width = "translate(" + ((this.service.monster.hp - this.service.charescolhido.atk) * 100 / this.service.monster.hp) + "%";
       this.verificarhp();
     }
   }
 
+  //Apos o ataque de cada um esta funcao "verificarhp" é chamada no qual verifica se algum jogador morreu e se sim quem ganha 
+  //se ninguem morrer passa o turno
   verificarhp(){
     if(this.service.charescolhido.hp <= 0){
       this.endgame(0);
@@ -107,6 +119,7 @@ getRndPlayer() {
     }
   }
 
+  // Funçao de fim de jogo , reset ás variveis necessarias . Incrementa 10 coins a cada vitoria e volta ao lobby
   endgame(lost : any){
     this.op = false;
     if(lost == 1){
@@ -121,11 +134,4 @@ getRndPlayer() {
       this.router.navigate(['/lobby']);
     }, 3000);
   }
-
-
-
-
-
-
-
 }

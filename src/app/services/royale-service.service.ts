@@ -14,7 +14,7 @@ export class RoyaleServiceService {
 
  
   charescolhido: any = {
-    name: "archer",
+    name: "Archer",
     id: "30",
     atk: "10",
     isMonset: "false",
@@ -29,7 +29,7 @@ export class RoyaleServiceService {
 
 
   monster: any = {
-    name: "goblin",
+    name: "Goblin",
     id: "",
     atk: "0",
     isMonset: "",
@@ -45,6 +45,8 @@ export class RoyaleServiceService {
 
   name : any;
   pass : any;
+
+  bought: boolean;
   
   linkLogin: string = "http://moreiramoises.pt/server/apis/login.php";
   linkRegister: string = 'http://moreiramoises.pt/server/apis/signup.php';

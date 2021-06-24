@@ -16,14 +16,15 @@ export class TrainingComponent implements OnInit {
     this.service = RoyaleService
     this.router = router;
   }
-  
+  //ao iniciar a pagina ir buscar as coins á api
   ngOnInit(): void {
     this.service.coins = Number(localStorage.getItem("coins"));
   }
 
   @ViewChild('train') train : any;
+  @ViewChild('losecoins') losecoins : any;
 
-
+// Verificaçao se passou um dia para voltar a poder treinar
   hasOneDayPassed() {
     var date = new Date().toLocaleDateString();
 
@@ -35,6 +36,9 @@ export class TrainingComponent implements OnInit {
     return true;
   }
 
+  //Funçao para treinar a personagem selecionada 
+  //Aumenta 5 de stats a cada atributo , da update na api e as coins na localstorage, mostra uma animaçao
+  //caso ja tenha treinado nas ultimas 24 horas mostra uma animaçao e é redirecionado para o lobby
   treinar(){
     if(this.hasOneDayPassed() && this.service.coins >= 500){
       this.service.coins -= 500;
@@ -46,6 +50,7 @@ export class TrainingComponent implements OnInit {
         console.log(x['data']);
       });
       localStorage.setItem("coins", this.service.coins);
+      this.losecoins.nativeElement.style.animation = "treining 1.5s";
     }else{
       this.train.nativeElement.style.animation = "piscar 2s ";
       setTimeout(() => {
