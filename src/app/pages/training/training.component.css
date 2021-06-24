@@ -1,5 +1,5 @@
 *{
-    font-size: larger;
+    font-size: 20px;
 }
 .page{
     position: relative;
@@ -52,8 +52,8 @@ button{
     transform: translate(-50%, -50%);
     z-index: 2;
     background-color: rgba(255, 183, 0, 0.901);
-    width: 8vw;
-    height: 6vh;
+    width: 10vw;
+    height: 7vh;
     border-radius: 25px;
     border: 1px solid black;
     font-size: large;
@@ -80,7 +80,7 @@ button{
 .losecoins{
     position: absolute;
     top: 6%;
-    left: 12.4%;
+    left: 12%;
     color: red;
     background-color: rgb(252, 165, 165);
     border-radius: 100px;

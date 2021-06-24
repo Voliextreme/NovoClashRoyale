@@ -1,5 +1,5 @@
 *{
-    font-size: 20px;
+    font-size: 15px;
 }
 .page{
     position: absolute;
@@ -146,4 +146,21 @@ button{
     height: 6vh;
     border-radius: 25px;
     border: 1px solid black;
+}
+
+.result{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(43, 43, 43, 0.808);
+    color: white;
+    
+    z-index: 20;
+}
+.result h1{
+    font-size: 70px;
+    color: rgba(255, 183, 0, 0.901);
 }

@@ -1,5 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-*{
+@font-face {
+	font-family: 'clash';
+	src: url('assets/Fonts/clashroyale.ttf');
+}
+* {
+	font-family: "clash";
+	font-size: 0.95rem;
+	color: white;
+    text-shadow: 1px 1px 1px black;
     margin: 0;
     padding: 0;
+    
 }
+    

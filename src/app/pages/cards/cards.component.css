@@ -1,13 +1,4 @@
-@font-face {
-	font-family: 'clash';
-	src: url('../../../assets/Fonts/clashroyale.ttf');
-}
-* {
-	font-family: "clash";
-	font-size: 0.95rem;
-    color: white;
-    text-shadow: 1px 1px 1px black;
-}
+
 .main-cards{
     width: 100vw;
     height: 100vh;

@@ -1,4 +1,13 @@
-import { ThrowStmt } from '@angular/compiler';
+/* O jogo segue uma "logica" no qual ao fazer o login o utilizador primeiramente tem de ir ás cartas simbolo do lado direito da imagem da arena
+e escolher uma personagem , caso esta personagem nao exista na conta do utilizador o jogo vai se encarregar de criar a personagem 
+porem para as 4 possiveis personagens funcionem 100% é necessario que sejam clickadas ordenadamente da direita para a esquerda 
+caso contrario algumas das variaveis inseridas manualmente no objeto vao estar trocadas , mas a personagem e sua ligaçao á api funciona igual
+
+Caso o jogo nao esteja a funcionar corretamente por favor tentar com o meu login username: tiago | password: tiago123
+
+Breve explicação do jogo funciona á base das coins o player começa com 5050 e pode treinar diariamente por 500 coins e comprar um set de armas melhoradas
+para todos os personagens por 1000 coins e a cada batalha ganha o jogador recebe 10 coins*/
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { RoyaleServiceService } from 'src/app/services/royale-service.service';
@@ -118,20 +127,24 @@ getRndPlayer() {
       }, 3000);
     }
   }
-
+  resultado : any;
+  @ViewChild('result') result : any;
   // Funçao de fim de jogo , reset ás variveis necessarias . Incrementa 10 coins a cada vitoria e volta ao lobby
   endgame(lost : any){
     this.op = false;
+    this.result.nativeElement.style.display ="flex";
+    //Caso o player ganhe, recebe 10 coins e guarda em localstorage
     if(lost == 1){
-      console.log("winner");
       this.service.coins += 10;
       localStorage.setItem("coins", this.service.coins);
+      this.resultado = "Winner";
     }else{
-      console.log("loser");
+      this.resultado = "Loser";
     }
     setTimeout(() => {
       this.service.charescolhido.hp = this.vidabase;
       this.router.navigate(['/lobby']);
+      this.result.nativeElement.style.display ="none";
     }, 3000);
   }
 }
